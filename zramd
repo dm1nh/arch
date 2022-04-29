@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Need to install Paru AUR package manager before run this file
+paru -S --noconfirm zramd
+sudo systemctl enable --now zramd
