@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/fish
 
 # Need to install Paru AUR package manager before run this file
 paru -S --noconfirm zramd
