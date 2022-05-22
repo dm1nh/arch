@@ -26,10 +26,10 @@ systemctl enable sshd
 systemctl enable reflector.timer
 systemctl enable firewalld
 
-useradd -m jadenw
-echo jadenw:<password> | chpasswd
-usermod -aG wheel jadenw
+useradd -m jadnw
+echo jadnw:<password> | chpasswd
+usermod -aG wheel jadnw
 
-echo "jadenw ALL=(ALL) ALL" >> /etc/sudoers.d/jadenw
+echo "jadnw ALL=(ALL) ALL" >> /etc/sudoers.d/jadnw
 
 echo "Done. Reboot and enjoy!"
