@@ -11,12 +11,12 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=us" > /etc/vconsole.conf
 echo "archjet" > /etc/hostname
 echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain archjet" >> /etc/hosts
-echo root:<password> | chpasswd
+echo root:password | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 # You can remove the tlp package if you are installing on a desktop or vm
 
-pacman -S --noconfirm grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant base-devel linux-headers alsa-utils pulseaudio pavucontrol openssh reflector bridge-utils firewalld os-prober ntfs-3g xdg-utils xdg-user-dirs git jq rsync unzip tree curl wget chromium firefox-developer-edition neovim
+pacman -S --noconfirm grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant base-devel linux-headers alsa-utils pulseaudio pavucontrol openssh reflector bridge-utils firewalld os-prober ntfs-3g xdg-utils xdg-user-dirs git jq rsync unzip tree curl wget neovim
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchJet #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -27,7 +27,7 @@ systemctl enable reflector.timer
 systemctl enable firewalld
 
 useradd -m jadnw
-echo jadnw:<password> | chpasswd
+echo jadnw:password | chpasswd
 usermod -aG wheel jadnw
 
 echo "jadnw ALL=(ALL) ALL" >> /etc/sudoers.d/jadnw
