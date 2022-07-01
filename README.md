@@ -14,12 +14,14 @@
 - genfstab -U /mnt >> /mnt/etc/fstab
 - arch-chroot /mnt
 - git clone https://github.com/jadnw/archjet.git
-- cd archfly
+- cd archjet
 - chmod +x install
 - ./install
 - EDITOR=nvim visudo
 - nvim /etc/mkinitcpio.conf
 - mkinitcpio -p linux
+- nvim /etc/default/grub
+- grub-mkconfig -o /boot/grub/grub.cfg
 - exit
 - umount -R /mnt
 - reboot
