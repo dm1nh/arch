@@ -1,4 +1,4 @@
-# Arch Installtion Guide (BTRFS, ZRAM, Timeshift AutoSnap,...)
+# Arch Installtion Guide (BTRFS, ZRAM,...)
 
 - mkfs.fat -F32 /dev/sda5
 - mkfs.btrfs /dev/sda6
