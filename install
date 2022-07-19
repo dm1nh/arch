@@ -14,7 +14,35 @@ echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain ar
 echo root:password | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
-pacman -S --noconfirm grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant base-devel linux-headers alsa-utils pulseaudio pavucontrol openssh reflector bridge-utils firewalld os-prober ntfs-3g xdg-utils xdg-user-dirs git jq rsync unzip tree curl wget neovim
+pacman -S --noconfirm \
+  btrfs-progs \
+  grub \
+  efibootmgr \
+  networkmanager \
+  network-manager-applet \
+  dialog \
+  wpa_supplicant \
+  base-devel \
+  linux-headers \
+  alsa-utils \
+  pulseaudio \
+  pavucontrol \
+  openssh \
+  reflector \
+  bridge-utils \
+  firewalld \
+  os-prober \
+  ntfs-3g \
+  xdg-utils \
+  xdg-user-dirs \
+  git \
+  jq \
+  rsync \
+  unzip \
+  tree \
+  curl \
+  wget \
+  neovim
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchJet #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
