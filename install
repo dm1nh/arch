@@ -15,41 +15,48 @@ echo root:password | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 pacman -S --noconfirm \
+  alsa-utils \
+  base-devel \
+  bridge-utils \
   btrfs-progs \
-  grub \
+  curl \
+  dialog \
+  dosfstools \
   efibootmgr \
+  firewalld \
+  git \
+  grub \
+  jq \
+  linux-headers \
+  mtools \
+  neovim \
   networkmanager \
   network-manager-applet \
-  dialog \
-  wpa_supplicant \
-  base-devel \
-  linux-headers \
-  alsa-utils \
-  pulseaudio \
-  pavucontrol \
-  openssh \
-  reflector \
-  bridge-utils \
-  firewalld \
-  os-prober \
+  nfs-utils \
   ntfs-3g \
-  xdg-utils \
-  xdg-user-dirs \
-  git \
-  jq \
+  openssh \
+  os-prober \
+  pavucontrol \
+  pipewire \
+  pipewire-alsa \
+  pipewire-pulse \
+  pipewire-jack \
+  reflector \
   rsync \
-  unzip \
   tree \
-  curl \
+  unzip \
   wget \
-  neovim
+  wpa_supplicant \
+  xdg-utils \
+  xdg-user-dir
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchJet #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
 systemctl enable sshd
-systemctl enable reflector.service
+systemctl enable reflector.timer
+systemctl enable fstrim.timer
 systemctl enable firewalld
 
 useradd -m jadnw
