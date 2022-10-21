@@ -17,6 +17,8 @@ echo root:password | chpasswd
 pacman -S --noconfirm \
   alsa-utils \
   base-devel \
+  bluez \
+  bluez-utils \
   bridge-utils \
   btrfs-progs \
   curl \
@@ -55,6 +57,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
 systemctl enable sshd
+systemctl enable bluetooth.service
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable firewalld
