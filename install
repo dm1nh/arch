@@ -29,7 +29,9 @@ pacman -S --noconfirm \
   git \
   grub \
   jq \
+  libva-mesa-driver \
   linux-headers \
+  mesa-vdpau \
   mtools \
   neovim \
   networkmanager \
