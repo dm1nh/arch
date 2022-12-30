@@ -16,7 +16,7 @@
 - git clone https://github.com/jadnw/archjet.git
 - cd archjet
 - chmod +x install
-- ./install
+- ./install \<password\>
 - EDITOR=nvim visudo
 - nvim /etc/mkinitcpio.conf
 - mkinitcpio -p linux

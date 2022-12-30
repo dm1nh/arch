@@ -11,7 +11,7 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=us" > /etc/vconsole.conf
 echo "archjet" > /etc/hostname
 echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain archjet" >> /etc/hosts
-echo root:password | chpasswd
+echo root:$argv[1] | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 pacman -S --noconfirm \
@@ -29,9 +29,7 @@ pacman -S --noconfirm \
   git \
   grub \
   jq \
-  libva-mesa-driver \
   linux-headers \
-  mesa-vdpau \
   mtools \
   neovim \
   networkmanager \
@@ -65,7 +63,7 @@ systemctl enable fstrim.timer
 systemctl enable firewalld
 
 useradd -m jadnw
-echo jadnw:password | chpasswd
+echo jadnw:$argv[1] | chpasswd
 usermod -aG wheel jadnw
 
 echo "jadnw ALL=(ALL) ALL" >> /etc/sudoers.d/jadnw
