@@ -1,5 +1,13 @@
 #!/bin/fish
 
+set pass $argv[1]
+if test -z "$pass"
+  echo "Please type your password as the first argument!"
+  exit 0
+end
+
+echo "You're installing ArchJet with password '$pass' for both root and jadnw."
+
 ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 hwclock --systohc
 
@@ -11,7 +19,7 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=us" > /etc/vconsole.conf
 echo "archjet" > /etc/hostname
 echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain archjet" >> /etc/hosts
-echo root:$argv[1] | chpasswd
+echo root:$pass | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 pacman -S --noconfirm \
@@ -63,7 +71,7 @@ systemctl enable fstrim.timer
 systemctl enable firewalld
 
 useradd -m jadnw
-echo jadnw:$argv[1] | chpasswd
+echo jadnw:$pass | chpasswd
 usermod -aG wheel jadnw
 
 echo "jadnw ALL=(ALL) ALL" >> /etc/sudoers.d/jadnw
