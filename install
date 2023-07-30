@@ -2,63 +2,63 @@
 
 set pass $argv[1]
 if test -z "$pass"
-  echo "Please type your password as the first argument!"
-  exit 0
+    echo "Please type your password as the first argument!"
+    exit 0
 end
 
-echo "You're installing ArchJet with password '$pass' for both root and jadnw."
+echo "You're installing ArchJet with password '$pass' for both root and dminh."
 
 ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 hwclock --systohc
 
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >/etc/locale.gen
 # or use this
 # sed -i '178s/.//' /etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=us" > /etc/vconsole.conf
-echo "archjet" > /etc/hostname
-echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain archjet" >> /etc/hosts
+echo "LANG=en_US.UTF-8" >/etc/locale.conf
+echo "KEYMAP=us" >/etc/vconsole.conf
+echo archjet >/etc/hostname
+echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain archjet" >>/etc/hosts
 echo root:$pass | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 pacman -S --noconfirm \
-  alsa-utils \
-  base-devel \
-  bluez \
-  bluez-utils \
-  bridge-utils \
-  btrfs-progs \
-  curl \
-  dialog \
-  dosfstools \
-  efibootmgr \
-  firewalld \
-  git \
-  grub \
-  jq \
-  linux-headers \
-  mtools \
-  neovim \
-  networkmanager \
-  network-manager-applet \
-  nfs-utils \
-  ntfs-3g \
-  openssh \
-  os-prober \
-  pavucontrol \
-  pipewire \
-  pipewire-alsa \
-  pipewire-pulse \
-  pipewire-jack \
-  reflector \
-  rsync \
-  tree \
-  unzip \
-  wget \
-  wpa_supplicant \
-  xdg-utils \
-  xdg-user-dirs
+    alsa-utils \
+    base-devel \
+    bluez \
+    bluez-utils \
+    bridge-utils \
+    btrfs-progs \
+    curl \
+    dialog \
+    dosfstools \
+    efibootmgr \
+    firewalld \
+    git \
+    grub \
+    jq \
+    linux-headers \
+    mtools \
+    neovim \
+    networkmanager \
+    network-manager-applet \
+    nfs-utils \
+    ntfs-3g \
+    openssh \
+    os-prober \
+    pavucontrol \
+    pipewire \
+    pipewire-alsa \
+    pipewire-pulse \
+    pipewire-jack \
+    reflector \
+    rsync \
+    tree \
+    unzip \
+    wget \
+    wpa_supplicant \
+    xdg-utils \
+    xdg-user-dirs
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchJet #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -70,10 +70,10 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable firewalld
 
-useradd -m jadnw
-echo jadnw:$pass | chpasswd
-usermod -aG wheel jadnw
+useradd -m dminh
+echo dminh:$pass | chpasswd
+usermod -aG wheel dminh
 
-echo "jadnw ALL=(ALL) ALL" >> /etc/sudoers.d/jadnw
+echo "dminh ALL=(ALL) ALL" >>/etc/sudoers.d/dminh
 
 echo "Done. Reboot and enjoy!"
