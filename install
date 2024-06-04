@@ -17,8 +17,8 @@ echo "en_US.UTF-8 UTF-8" >/etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >/etc/locale.conf
 echo "KEYMAP=us" >/etc/vconsole.conf
-echo archjet >/etc/hostname
-echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 archjet.localdomain archjet" >>/etc/hosts
+echo arch >/etc/hostname
+echo "127.0.0.1 localhost\n::1       localhost\n127.0.1.1 arch.localdomain arch" >>/etc/hosts
 echo root:$pass | chpasswd
 
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
@@ -63,6 +63,9 @@ pacman -S --noconfirm \
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchJet #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
+
+
+cp -R ./config/reflector /etc/xdg/
 
 systemctl enable NetworkManager
 systemctl enable sshd
