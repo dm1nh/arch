@@ -6,7 +6,7 @@ if test -z "$pass"
     exit 0
 end
 
-echo "You're installing ArchJet with password '$pass' for both root and dminh."
+echo "You're installing ArchJet with password '$pass' for both root and dm1nh."
 
 ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 hwclock --systohc
@@ -74,10 +74,10 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable firewalld
 
-useradd -m dminh
-echo dminh:$pass | chpasswd
-usermod -aG wheel dminh
+useradd -m dm1nh
+echo dm1nh:$pass | chpasswd
+usermod -aG wheel dm1nh
 
-echo "dminh ALL=(ALL) ALL" >>/etc/sudoers.d/dminh
+echo "dm1nh ALL=(ALL) ALL" >>/etc/sudoers.d/dm1nh
 
 echo "Done. Reboot and enjoy!"
