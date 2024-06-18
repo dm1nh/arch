@@ -6,7 +6,7 @@ if test -z "$pass"
     exit 0
 end
 
-echo "You're installing ArchJet with password '$pass' for both root and dm1nh."
+echo "You're installing Arch Linux with password '$pass' for both root and dm1nh."
 
 ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 hwclock --systohc
@@ -28,7 +28,6 @@ pacman -S --noconfirm \
     bluez \
     bluez-utils \
     bridge-utils \
-    btrfs-progs \
     curl \
     dialog \
     dosfstools \
@@ -61,7 +60,7 @@ pacman -S --noconfirm \
     xdg-utils \
     xdg-user-dirs
 
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchJet #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch #change the directory to /boot/efi is you mounted the EFI partition at /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
 

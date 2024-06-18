@@ -1,23 +1,22 @@
 # Arch Installtion Guide (BTRFS, ZRAM,...)
 
-- mkfs.fat -F32 /dev/sda5
-- mkfs.btrfs /dev/sda6
-- mount /dev/sda6 /mnt
+- mkfs.fat -F32 /dev/nvme0n1p5
+- mkfs.btrfs /dev/nvme0n1p6
+- mount /dev/nvme0n1p6 /mnt
 - btrfs subvolume create /mnt/@
 - btrfs subvolume create /mnt/@home
 - umount /mnt
-- mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ /dev/sda6 /mnt
+- mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ /dev/nvme0n1p6 /mnt
 - mkdir /mnt/{boot,home}
-- mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home /dev/sda6 /mnt/home
-- mount /dev/sda5 /mnt/boot
+- mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home /dev/nvme0n1p6 /mnt/home
+- mount /dev/nvme0n1p5 /mnt/boot
 - pacstrap /mnt base linux linux-firmware neovim git fish amd-ucode
 - genfstab -U /mnt >> /mnt/etc/fstab
 - arch-chroot /mnt
-- git clone https://github.com/jadnw/archjet.git
-- cd archjet
+- git clone https://github.com/dm1nh/arch.git
+- cd arch
 - chmod +x install
 - ./install \<password\>
-- EDITOR=nvim visudo
 - nvim /etc/mkinitcpio.conf
 - mkinitcpio -p linux
 - nvim /etc/default/grub
