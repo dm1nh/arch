@@ -28,6 +28,7 @@ pacman -S --noconfirm \
     bluez \
     bluez-utils \
     bridge-utils \
+    btrfs-progs \
     curl \
     dialog \
     dosfstools \
@@ -36,8 +37,11 @@ pacman -S --noconfirm \
     fuse3 \
     git \
     grub \
+    grub-btrfs \
+    inotify-tools \
     jq \
     linux-headers \
+    man \
     mtools \
     neovim \
     networkmanager \
@@ -53,6 +57,8 @@ pacman -S --noconfirm \
     pipewire-jack \
     reflector \
     rsync \
+    sudo \
+    timeshift \
     tree \
     unzip \
     wget \
